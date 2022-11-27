@@ -1,7 +1,9 @@
-package com.example.kodlama_io_day5_task2_api_data;
+package com.example;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
 
 @SpringBootApplication
 public class KodlamaIoDay5Task2ApiDataApplication {
@@ -10,4 +12,8 @@ public class KodlamaIoDay5Task2ApiDataApplication {
 		SpringApplication.run(KodlamaIoDay5Task2ApiDataApplication.class, args);
 	}
 
+	@Bean
+	public ModelMapper mapper() {
+		return new ModelMapper();
+	}
 }
