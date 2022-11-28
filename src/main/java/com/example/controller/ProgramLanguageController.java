@@ -26,5 +26,24 @@ public class ProgramLanguageController {
                 .body(programLanguageService.save(progLangDto));
     }
 
+    @DeleteMapping("{id}")
+    public void deleteProgramLanguage(@PathVariable("id") Long id){
+        programLanguageService.deleteById(id);
+    }
+
+
+    @GetMapping("{id}")
+    public ResponseEntity<ProgramLanguageDto> findById(@PathVariable("id") Long id){
+        return ResponseEntity.ok(programLanguageService.findById(id));
+    }
+
+
+    @PutMapping("{id}")
+    public ResponseEntity<ProgramLanguageDto> updateProgramLanguage(@RequestBody ProgramLanguageDto programLanguageDto, @PathVariable Long id){
+       return ResponseEntity
+               .status(HttpStatus.ACCEPTED)
+               .header("Operation","Update")
+               .body(programLanguageService.update(id,programLanguageDto));
+    }
 
 }
