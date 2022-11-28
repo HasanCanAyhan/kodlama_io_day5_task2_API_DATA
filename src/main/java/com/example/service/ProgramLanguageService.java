@@ -1,6 +1,9 @@
 package com.example.service;
 
 import com.example.dto.ProgramLanguageDto;
+import org.springframework.http.ResponseEntity;
+
+import java.util.List;
 
 public interface ProgramLanguageService {
 
@@ -9,4 +12,5 @@ public interface ProgramLanguageService {
     ProgramLanguageDto update(Long id, ProgramLanguageDto dto);
     ProgramLanguageDto findById(Long id);
 
+    List<ProgramLanguageDto> findAllProgramLanguages();
 }

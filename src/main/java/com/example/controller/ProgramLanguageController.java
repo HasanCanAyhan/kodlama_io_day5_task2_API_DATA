@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/language/api/v1")
 public class ProgramLanguageController {
@@ -16,6 +18,17 @@ public class ProgramLanguageController {
 
     public ProgramLanguageController(ProgramLanguageService programLanguageService) {
         this.programLanguageService = programLanguageService;
+    }
+
+
+    @GetMapping
+    public ResponseEntity<List<ProgramLanguageDto>> getAllProgramLanguages(){
+
+        return ResponseEntity
+                .status(HttpStatus.ACCEPTED)// 202 : ACCEPTED
+                .header("Version","Cydeo.V2")
+                .header("Operation","Get List")
+                .body( programLanguageService.findAllProgramLanguages() );
     }
 
     @PostMapping

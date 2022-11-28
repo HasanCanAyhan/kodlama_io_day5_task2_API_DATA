@@ -8,7 +8,9 @@ import com.example.util.MapperUtil;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class ProgramLanguageServiceImpl implements ProgramLanguageService {
@@ -56,5 +58,13 @@ public class ProgramLanguageServiceImpl implements ProgramLanguageService {
             return mapperUtil.convert(language,new ProgramLanguageDto());
         }
         return null;
+    }
+
+    @Override
+    public List<ProgramLanguageDto> findAllProgramLanguages() {
+        List<ProgramLanguage> languageList = programLanguageRepository.findAll();
+
+        return languageList.stream().map(programLanguage -> mapperUtil.convert(programLanguage,new ProgramLanguageDto())).collect(Collectors.toList());
+
     }
 }
